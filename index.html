@@ -1,12 +1,75 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang='fr'>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maracana Salon Website</title>
+<meta charset='UTF-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+<title>Maracana Salon</title>
+<link rel='stylesheet' href='style.css'>
 </head>
 <body>
-    <h1>Welcome to Maracana Salon</h1>
-    <p>Contact us at: +216025139668</p>
+<header>
+<h1>MARACANA</h1>
+<nav>
+<a href='#services'>Services</a>
+<a href='#booking'>Réservation</a>
+</nav>
+<div class='lang-switch'>
+<button onclick="setLang('fr')">FR</button>
+<button onclick="setLang('ar')">AR</button>
+</div>
+</header>
+<section class='hero'>
+<h2 id='hero-title'>Luxury Hair Experience</h2>
+<p id='hero-subtitle'>Élégance • Style • Perfection</p>
+<a href='https://wa.me/216025139668' target='_blank' class='btn'>Book via WhatsApp</a>
+</section>
+<section id='services'>
+<h2 id='services-title'>Our Services</h2>
+<div class='services-grid'>
+<div class='service-card'>Coupe Homme</div>
+<div class='service-card'>Coupe Femme</div>
+<div class='service-card'>Coloration</div>
+<div class='service-card'>Kératine</div>
+</div>
+</section>
+<section id='booking'>
+<h2 id='booking-title'>Réservation</h2>
+<input type='text' id='name' placeholder='Votre nom'>
+<input type='date' id='date'>
+<select id='service'>
+<option>Coupe Homme</option>
+<option>Coupe Femme</option>
+<option>Coloration</option>
+<option>Kératine</option>
+</select>
+<button class='btn' onclick='sendBooking()'>Confirmer</button>
+</section>
+<footer>
+© 2026 Maracana Salon — Designed by Amine
+</footer>
+<script>
+function setLang(lang){
+if(lang==='fr'){
+document.getElementById('hero-title').innerText='Luxury Hair Experience';
+document.getElementById('hero-subtitle').innerText='Élégance • Style • Perfection';
+document.getElementById('services-title').innerText='Our Services';
+document.getElementById('booking-title').innerText='Réservation';
+document.body.style.direction='ltr';
+}else{
+document.getElementById('hero-title').innerText='تجربة شعر فاخرة';
+document.getElementById('hero-subtitle').innerText='أناقة • ستايل • كمال';
+document.getElementById('services-title').innerText='الخدمات';
+document.getElementById('booking-title').innerText='الحجز';
+document.body.style.direction='rtl';
+}
+}
+function sendBooking(){
+const name=document.getElementById('name').value;
+const date=document.getElementById('date').value;
+const service=document.getElementById('service').value;
+const message=`Bonjour, je m'appelle ${name} et je veux réserver ${service} le ${date}`;
+window.open(`https://wa.me/216025139668?text=${encodeURIComponent(message)}`,'_blank');
+}
+</script>
 </body>
 </html>
